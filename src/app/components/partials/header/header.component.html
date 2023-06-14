@@ -1,42 +1,94 @@
 <header>
   <div class="lg:h-24 h-14 bg-[#182755]">
-    <div  class="mx-auto container px-6 max-w-6xl  pt-4 lg:pt-12  flex justify-between  gap-10">
+    <div  class="mx-auto container px-6 max-w-6xl relative  pt-4 lg:pt-12  flex justify-between  gap-10">
       <a title="Site's logo" href="#" class="w-20 z-10 md:w-28 xl:w-32 transition-all "   >
           <img loading="lazy" class="w-full h-full"  alt="image"  src="../../../../assets/imgs/share/logo.png"/>
       </a>
       <ul class=" lg:flex text-white hidden gap-5 xl:text-sm pt-2 text-xs font-extrabold ">
-        <li>
-            <a class="hover:text-[#e87c04] transition-all " href="#" >COFFEE BEANS</a>
-            <div class="h-96 w-full absolute top-[128px] left-0 bg-[#182755] transition-all ">
-              <div class="container mx-auto px-6 max-w-6xl justify-between flex">
-                <div class="pt-28 ">
-                  <ul class="flex flex-col gap-8 font-medium text-lg">
-                    <div class="flex group hover:text-[#e87c04] hover:border-b border-[#e87c04] justify-between items-center  cursor-pointer">
-                      <li>
+        <li class="group h-20">
+            <a class="group-hover:text-[#e87c04] transition-all"  href="#" >COFFEE BEANS</a>
+            <div class="w-full h-80 absolute  top-[128px] group-hover:block hidden left-0 bg-[#182755] transition-all ">
+              <div class="container mx-auto px-6 max-w-6xl justify-between flex gap-5">
+                <div class="pt-28 w-1/6">
+                  <ul class="flex flex-col gap-5 font-medium text-base">
+                    <li (mouseenter)="addDynamicContentCoffeeBeans('continent')" [ngClass]="currentButtonType == 'continent' ? 'text-[#e87c04] border-b' : ''" class="flex  border-[#e87c04] justify-between items-center  cursor-pointer">
+                      <div>
                         Continent
-                      </li>
-                      <div class="w-[10px]  h-2 group-hover:visible invisible rotate-90 ">
+                      </div>
+                      <div class="w-[10px]  h-2  rotate-90 " [ngClass]="currentButtonType == 'continent' ? 'visible' : 'invisible'">
                         <img class="w-full h-full" src="../../../../assets/imgs/share/arrow-up.png"/>
                       </div>
-                    </div>
-                    <li class="hover:text-[#e87c04] transition-all cursor-pointer">
-                      Coffee type
                     </li>
-                    <li class="hover:text-[#e87c04] transition-all cursor-pointer">
-                      Time of Day
+                    <li (mouseenter)="addDynamicContentCoffeeBeans('type')" [ngClass]="currentButtonType == 'type' ? 'text-[#e87c04] border-b' : ''" class="flex border-[#e87c04] justify-between items-center  cursor-pointer">
+                      <div>
+                        Coffee type
+                      </div>
+                      <div class="w-[10px] h-2 rotate-90" [ngClass]="currentButtonType == 'type' ? 'visible' : 'invisible'" >
+                        <img class="w-full h-full" src="../../../../assets/imgs/share/arrow-up.png"/>
+                      </div>
+                    </li>
+                    <li (mouseenter)="addDynamicContentCoffeeBeans('time')" [ngClass]="currentButtonType == 'time' ? 'text-[#e87c04] border-b' : ''"   class="flex border-[#e87c04] justify-between items-center  cursor-pointer">
+                      <div>
+                        Time of Day
+                      </div>
+                      <div class="w-[10px] h-2    rotate-90 " [ngClass]="currentButtonType == 'time' ? 'visible' : 'invisible'">
+                        <img class="w-full h-full" src="../../../../assets/imgs/share/arrow-up.png"/>
+                      </div>
                     </li>
                     <li>
-                      <a href="#">
+                      <a class="hover:text-[#e87c04]" href="#">
                         Show all coffees
                       </a>
                     </li>
                   </ul>
                 </div>
+                <div  #dynamicContentCoffeeBeans>
+                </div>
+                <div class="h-80 w-2/6">
+                  <img class="w-full h-full object-cover" src="../../../../assets/imgs/contents/exclusive-1.jpg"/>
+                </div>
               </div>
             </div>
         </li>
-        <li>
-          <a class="hover:text-[#e87c04] transition-all" href="#">PACKED COFFEE & ACCESSORIES</a>
+        <li class="group h-20">
+          <a class="group-hover:text-[#e87c04] transition-all" href="#">PACKED COFFEE & ACCESSORIES</a>
+          <div class="w-full  h-80 absolute top-[128px] group-hover:block hidden left-0 bg-[#182755] transition-all ">
+            <div class="container mx-auto px-6 max-w-6xl justify-between flex gap-5">
+              <div class="pt-28 w-1/6">
+                <ul class="flex flex-col gap-5 font-medium text-base">
+                  <li (mouseenter)="addDynamicContentPackedCoffeeAndAccessories('packedCoffeesAndHampers')" [ngClass]="currentButtonType == 'packedCoffeesAndHampers' ? 'text-[#e87c04] border-b' : ''" class="flex  border-[#e87c04] justify-between items-center  cursor-pointer">
+                    <div>
+                      Packed Coffees & Hampers
+                    </div>
+                    <div class="w-[10px]  h-2  rotate-90 " [ngClass]="currentButtonType == 'packedCoffeesAndHampers' ? 'visible' : 'invisible'">
+                      <img class="w-full h-full" src="../../../../assets/imgs/share/arrow-up.png"/>
+                    </div>
+                  </li>
+                  <li (mouseenter)="addDynamicContentPackedCoffeeAndAccessories('coffeeAccessoriesAndGifts')" [ngClass]="currentButtonType == 'coffeeAccessoriesAndGifts' ? 'text-[#e87c04] border-b' : ''" class="flex border-[#e87c04] justify-between items-center  cursor-pointer">
+                    <div>
+                      Coffee Accessories & Gifts
+                    </div>
+                    <div class="w-[10px] h-2 rotate-90" [ngClass]="currentButtonType == 'coffeeAccessoriesAndGifts' ? 'visible' : 'invisible'" >
+                      <img class="w-full h-full" src="../../../../assets/imgs/share/arrow-up.png"/>
+                    </div>
+                  </li>
+                  <li (mouseenter)="addDynamicContentPackedCoffeeAndAccessories('gourmetProducts')" [ngClass]="currentButtonType == 'gourmetProducts' ? 'text-[#e87c04] border-b' : ''"   class="flex border-[#e87c04] justify-between items-center  cursor-pointer">
+                    <div>
+                      Gourmet Products
+                    </div>
+                    <div  class="w-[10px] h-2 rotate-90 " [ngClass]="currentButtonType == 'gourmetProducts' ? 'visible' : 'invisible'">
+                      <img class="w-full h-full" src="../../../../assets/imgs/share/arrow-up.png"/>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div  #dynamicPackedCoffeeAndAccessories>
+              </div>
+              <div class="h-80 w-2/6">
+                <img class="w-full h-full object-cover" src="../../../../assets/imgs/contents/coffee-room-location-4.jpg"/>
+              </div>
+            </div>
+          </div>
         </li>
         <li>
           <a class="hover:text-[#e87c04] transition-all" href="#" >ABOUT US</a>
@@ -48,22 +100,80 @@
           <a class="hover:text-[#e87c04] transition-all" href="#">LOCATION</a>
         </li>
       </ul>
-      <div class="flex gap-1 flex-row-reverse text-white ">
+      <div class="flex h-20  gap-1 flex-row-reverse text-white ">
         <div class="lg:hidden hover:text-[#e87c04]">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-        </svg>
-        <a href="#" class="cursor-pointer">
+        <div class="bag" (mouseenter)="isBag = true; $event.stopPropagation()" (mouseleave)="isBag = false; $event.stopPropagation()">
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <div class="absolute -top-2 left-5 flex justify-center items-center h-5 w-5 bg-[#e87c04] rounded-full">
+              <span class="text-xs text-white" [ngSwitch]="cartItems.length"  >
+                <ng-container *ngSwitchCase="0">
+                  0
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  {{ cartItems.length }}
+                </ng-container>
+              </span>
+            </div>
+          </div>
+          <div *ngIf="isBag === true" class="absolute p-6 bg-[#182755] top-[80px] right-0 left-auto w-full lg:w-[550px]">
+            <span [ngSwitch]="cartItems.length"  >
+              <ng-container *ngSwitchCase="0">
+                <div>Shopping cart is empty</div>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <div>{{ cartItems.length }}</div>
+              </ng-container>
+            </span>
+          </div>
+        </div>
+        <div class="account" (mouseenter)="isAccount = true; $event.stopPropagation()" (mouseleave)="isAccount = false; $event.stopPropagation()" >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+          </svg>
+          <div *ngIf="isAccount === true" class="absolute px-4 py-4 bg-[#182755] top-[80px] right-0 left-auto w-[250px] z-10">
+            <ul class="font-light font-sans text-base ">
+              <li class="pb-3">
+                <a href="#" class="hover:text-[#e87c04] transition-all">
+                  Login/Register
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-[#e87c04] transition-all">
+                  FAQs
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none"viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer" (click)="isSearch = true; $event.stopPropagation()">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+          </svg>
+          <div *ngIf="isSearch === true" class="absolute p-6 bg-[#182755] top-[80px] right-0 left-auto w-96">
+            <div class="flex justify-end" >
+              <svg xmlns="http://www.w3.org/2000/svg"fill="none" viewBox="0 0 24 24"stroke-width="1.5"stroke="currentColor"class="w-6 h-6 hover:text-[#e87c04] cursor-pointer transition-all" (click)="isSearch = false">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+            <div class="font-light text-sm">
+              <label>Search</label>
+              <div class="relative">
+                <input type="text" placeholder="Your journey starts hear..."  nam="search" class="w-full pl-5 pr-10 py-2 mt-1 text-black border-none outline-none " />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none"viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#182755] hover:text-[#e87c04] transition-all cursor-pointer absolute top-1/2 transform -translate-y-1/2 right-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="language cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
           </svg>
@@ -79,3 +189,4 @@
     </span>
   </div>
 </header>
+
