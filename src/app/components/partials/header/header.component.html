@@ -1,13 +1,13 @@
-<header>
-  <div class="lg:h-24 h-14 bg-[#182755]">
-    <div  class="mx-auto container px-6 max-w-6xl relative  pt-4 lg:pt-12  flex justify-between  gap-10">
+<header id="header" class="fixed w-screen z-50 " >
+  <div class="lg:h-24 h-14 bg-[#182755] ">
+    <div  class="mx-auto container px-6 max-w-6xl relative  pt-4 lg:pt-12  flex justify-between  gap-10"  >
       <a title="Site's logo" href="#" class="w-20 z-10 md:w-28 xl:w-32 transition-all "   >
           <img loading="lazy" class="w-full h-full"  alt="image"  src="../../../../assets/imgs/share/logo.png"/>
       </a>
       <ul class=" lg:flex text-white hidden gap-5 xl:text-sm pt-2 text-xs font-extrabold ">
-        <li class="group h-20">
+        <li class="group  h-20">
             <a class="group-hover:text-[#e87c04] transition-all"  href="#" >COFFEE BEANS</a>
-            <div class="w-full h-80 absolute  top-[128px] group-hover:block hidden left-0 bg-[#182755] transition-all ">
+            <div class="w-full h-80 absolute   top-[128px] group-hover:block hidden left-0 bg-[#182755] transition-all ">
               <div class="container mx-auto px-6 max-w-6xl justify-between flex gap-5">
                 <div class="pt-28 w-1/6">
                   <ul class="flex flex-col gap-5 font-medium text-base">
@@ -31,7 +31,7 @@
                       <div>
                         Time of Day
                       </div>
-                      <div class="w-[10px] h-2    rotate-90 " [ngClass]="currentButtonType == 'time' ? 'visible' : 'invisible'">
+                      <div class="w-[10px] h-2 rotate-90 " [ngClass]="currentButtonType == 'time' ? 'visible' : 'invisible'">
                         <img class="w-full h-full" src="../../../../assets/imgs/share/arrow-up.png"/>
                       </div>
                     </li>
@@ -100,14 +100,17 @@
           <a class="hover:text-[#e87c04] transition-all" href="#">LOCATION</a>
         </li>
       </ul>
-      <div class="flex h-20  gap-1 flex-row-reverse text-white ">
-        <div class="lg:hidden hover:text-[#e87c04]">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <div class="flex h-20 gap-1 flex-row-reverse text-white ">
+        <div class="lg:hidden ">
+          <svg (click)="isSlideBarOpen = true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
+          <div *ngIf="isSlideBarOpen === true">
+            <app-slide-bar [isSlideBarOpen]="isSlideBarOpen" (closeSlideBar)="closeSlideBar()" ></app-slide-bar>
+          </div>
         </div>
         <div class="bag" (mouseenter)="isBag = true; $event.stopPropagation()" (mouseleave)="isBag = false; $event.stopPropagation()">
-          <div class="relative">
+          <div class="relative pr-5 lg:pr-0 ">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
@@ -122,7 +125,7 @@
               </span>
             </div>
           </div>
-          <div *ngIf="isBag === true" class="absolute p-6 bg-[#182755] top-[80px] right-0 left-auto w-full lg:w-[550px]">
+          <div *ngIf="isBag === true" class="absolute p-6 pt-16 md:pt-6 bg-[#182755] top-[5.5rem] lg:top-[128px] right-0 left-auto w-full md:w-[550px]">
             <span [ngSwitch]="cartItems.length"  >
               <ng-container *ngSwitchCase="0">
                 <div>Shopping cart is empty</div>
@@ -137,7 +140,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
           </svg>
-          <div *ngIf="isAccount === true" class="absolute px-4 py-4 bg-[#182755] top-[80px] right-0 left-auto w-[250px] z-10">
+          <div *ngIf="isAccount === true" class="absolute px-4 md:pt-4 pt-10 pb-4  bg-[#182755] lg:top-[128px] top-[5.5rem] right-0 left-auto w-full md:w-[250px] ">
             <ul class="font-light font-sans text-base ">
               <li class="pb-3">
                 <a href="#" class="hover:text-[#e87c04] transition-all">
@@ -156,7 +159,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" fill="none"viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer" (click)="isSearch = true; $event.stopPropagation()">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
           </svg>
-          <div *ngIf="isSearch === true" class="absolute p-6 bg-[#182755] top-[80px] right-0 left-auto w-96">
+          <div *ngIf="isSearch === true" class="absolute p-6 bg-[#182755] w-full top-[5.5rem] lg:top-[128px] right-0 left-auto md:w-96">
             <div class="flex justify-end" >
               <svg xmlns="http://www.w3.org/2000/svg"fill="none" viewBox="0 0 24 24"stroke-width="1.5"stroke="currentColor"class="w-6 h-6 hover:text-[#e87c04] cursor-pointer transition-all" (click)="isSearch = false">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -188,5 +191,6 @@
       Receive a free TWGTea reusable tote bag on orders of $100 or more!
     </span>
   </div>
+
 </header>
 

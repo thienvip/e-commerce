@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,23 +6,20 @@ import { Component, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation } fro
   styleUrls: ['./header.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   @ViewChild("dynamicContentCoffeeBeans", { read: ViewContainerRef, static: true })
   containerRef!: ViewContainerRef;
 
   @ViewChild("dynamicPackedCoffeeAndAccessories", { read: ViewContainerRef, static: true })
   containerRef2!: ViewContainerRef;
+
   cartItems: any[] = [];
-
-  constructor() {}
-
-  ngOnInit() {}
-
-  isVisible:boolean = false;
-  isBag:boolean = false;
-  isAccount: boolean= false;
-  isSearch:boolean = false;
+  isVisible = false;
+  isBag = false;
+  isAccount= false;
+  isSearch= false;
+  isSlideBarOpen= false;
   currentButtonType: string | null = null;
 
   async addDynamicContentCoffeeBeans(buttontext: string) {
@@ -33,14 +30,14 @@ export class HeaderComponent implements OnInit {
     if(this.isVisible === false){
       this.containerRef.clear();
       const { CoffeeBeansComponent } = await import('./coffee-beans/coffee-beans.component');
-      let componentRef = this.containerRef.createComponent(CoffeeBeansComponent);
+      const componentRef = this.containerRef.createComponent(CoffeeBeansComponent);
       componentRef.instance.buttonText = buttontext;
       this.currentButtonType = buttontext;
       this.isVisible = true
     } else {
       this.containerRef.clear();
       const { CoffeeBeansComponent } = await import('./coffee-beans/coffee-beans.component');
-      let componentRef = this.containerRef.createComponent(CoffeeBeansComponent);
+      const componentRef = this.containerRef.createComponent(CoffeeBeansComponent);
       componentRef.instance.buttonText = buttontext;
       this.isVisible = false
       this.currentButtonType = buttontext;
@@ -54,17 +51,32 @@ export class HeaderComponent implements OnInit {
     if(this.isVisible === false){
       this.containerRef2.clear();
       const { PackedCoffeeAndAccessoriesComponent } = await import('./packed-coffee-and-accessories/packed-coffee-and-accessories.component');
-      let componentRef = this.containerRef2.createComponent(PackedCoffeeAndAccessoriesComponent);
+      const componentRef = this.containerRef2.createComponent(PackedCoffeeAndAccessoriesComponent);
       componentRef.instance.buttonText = buttonText;
       this.currentButtonType = buttonText;
       this.isVisible = true
     } else {
       this.containerRef2.clear();
       const { PackedCoffeeAndAccessoriesComponent } = await import('./packed-coffee-and-accessories/packed-coffee-and-accessories.component');
-      let componentRef = this.containerRef2.createComponent(PackedCoffeeAndAccessoriesComponent);
+      const componentRef = this.containerRef2.createComponent(PackedCoffeeAndAccessoriesComponent);
       componentRef.instance.buttonText = buttonText;
       this.isVisible = false
       this.currentButtonType = buttonText;
+    }
+  }
+
+  closeSlideBar(): void {
+    this.isSlideBarOpen = false;
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onClickOutside(targetElement: HTMLElement): void {
+    if (!this.isSlideBarOpen) {
+      return;
+    }
+    const slideBar = document.getElementById('header');
+    if (!slideBar?.contains(targetElement) && this.isSlideBarOpen) {
+      this.isSlideBarOpen = false;
     }
   }
 

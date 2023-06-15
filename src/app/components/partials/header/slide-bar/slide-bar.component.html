@@ -1,0 +1,16 @@
+<div id="slideBar"  class="absolute bg-[#182755] top-0 right-0 left-auto w-96 h-screen z-10" >
+  <div class="px-10 pt-5">
+    <svg (click)="onButtonClick()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 rotate-180 cursor-pointer hover:text-[#e87c04]">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+    </svg>
+  </div>
+  <ul  class="px-6 py-4">
+    <li *ngFor="let item of menuItems"
+        [routerLink]="item.route"
+        routerLinkActive="text-[#e87c04]"
+        class="py-2 px-4 text-sm font-light hover:text-[#e87c04] transition-all cursor-pointer"
+    >
+      {{item.label}}
+    </li>
+  </ul>
+</div>
