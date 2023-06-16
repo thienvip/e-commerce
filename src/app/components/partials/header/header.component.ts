@@ -20,6 +20,7 @@ export class HeaderComponent {
   isAccount= false;
   isSearch= false;
   isSlideBarOpen= false;
+  isScrollDown = false;
   currentButtonType: string | null = null;
 
   async addDynamicContentCoffeeBeans(buttontext: string) {
@@ -80,6 +81,11 @@ export class HeaderComponent {
     }
   }
 
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    const scrollPosition = window.scrollY ;
+    this.isScrollDown = scrollPosition > 0;
+  }
 
 
-}
+  }

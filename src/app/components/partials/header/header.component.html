@@ -1,13 +1,18 @@
 <header id="header" class="fixed w-screen z-50 " >
-  <div class="lg:h-24 h-14 bg-[#182755] ">
-    <div  class="mx-auto container px-6 max-w-6xl relative  pt-4 lg:pt-12  flex justify-between  gap-10"  >
-      <a title="Site's logo" href="#" class="w-20 z-10 md:w-28 xl:w-32 transition-all "   >
-          <img loading="lazy" class="w-full h-full"  alt="image"  src="../../../../assets/imgs/share/logo.png"/>
+  <div class="lg:h-24 h-14  bg-[#182755] ">
+    <div  class="mx-auto container px-6 max-w-6xl pt-4 lg:pt-12  flex justify-between  gap-10"  >
+      <a title="Site's logo" href="#" class="w-20  z-10 md:w-28 relative xl:w-32 transition-all ">
+          <div *ngIf="isScrollDown === false">
+            <img loading="lazy" class="w-full h-full logo-img"  alt="image"  src="../../../../assets/imgs/share/logo.png"/>
+          </div>
+          <div *ngIf="isScrollDown === true">
+            <img loading="lazy" class="logo-img absolute -top-2 lg:left-10  lg:-top-6  w-12 lg:w-16  "  alt="image"  src="../../../../assets/imgs/share/logo-scroll.png"/>
+          </div>
       </a>
       <ul class=" lg:flex text-white hidden gap-5 xl:text-sm pt-2 text-xs font-extrabold ">
         <li class="group  h-20">
             <a class="group-hover:text-[#e87c04] transition-all"  href="#" >COFFEE BEANS</a>
-            <div class="w-full h-80 absolute   top-[128px] group-hover:block hidden left-0 bg-[#182755] transition-all ">
+            <div class="w-full h-80 absolute top-[128px] group-hover:block hidden left-0 bg-[#182755] transition-all ">
               <div class="container mx-auto px-6 max-w-6xl justify-between flex gap-5">
                 <div class="pt-28 w-1/6">
                   <ul class="flex flex-col gap-5 font-medium text-base">
@@ -100,7 +105,7 @@
           <a class="hover:text-[#e87c04] transition-all" href="#">LOCATION</a>
         </li>
       </ul>
-      <div class="flex h-20 gap-1 flex-row-reverse text-white ">
+      <div class="flex h-20 gap-1 lg:relative  flex-row-reverse text-white ">
         <div class="lg:hidden ">
           <svg (click)="isSlideBarOpen = true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -125,7 +130,7 @@
               </span>
             </div>
           </div>
-          <div *ngIf="isBag === true" class="absolute p-6 pt-16 md:pt-6 bg-[#182755] top-[5.5rem] lg:top-[128px] right-0 left-auto w-full md:w-[550px]">
+          <div *ngIf="isBag === true" class="absolute p-6 pt-16 md:pt-6 bg-[#182755] top-[5.5rem] lg:top-20 right-0 left-auto w-full md:w-[550px]">
             <span [ngSwitch]="cartItems.length"  >
               <ng-container *ngSwitchCase="0">
                 <div>Shopping cart is empty</div>
@@ -140,7 +145,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
           </svg>
-          <div *ngIf="isAccount === true" class="absolute px-4 md:pt-4 pt-10 pb-4  bg-[#182755] lg:top-[128px] top-[5.5rem] right-0 left-auto w-full md:w-[250px] ">
+          <div *ngIf="isAccount === true" class="absolute px-4 md:pt-4 pt-10 pb-4  bg-[#182755] lg:lg:top-20 top-[5.5rem] right-0 left-auto w-full md:w-[250px] ">
             <ul class="font-light font-sans text-base ">
               <li class="pb-3">
                 <a href="#" class="hover:text-[#e87c04] transition-all">
@@ -159,9 +164,9 @@
           <svg xmlns="http://www.w3.org/2000/svg" fill="none"viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"class="w-6 h-6 hover:text-[#e87c04] transition-all cursor-pointer" (click)="isSearch = true; $event.stopPropagation()">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
           </svg>
-          <div *ngIf="isSearch === true" class="absolute p-6 bg-[#182755] w-full top-[5.5rem] lg:top-[128px] right-0 left-auto md:w-96">
+          <div *ngIf="isSearch === true" class="absolute p-6 bg-[#182755] container top-[5.5rem] lg:top-20 right-0 left-auto md:w-96">
             <div class="flex justify-end" >
-              <svg xmlns="http://www.w3.org/2000/svg"fill="none" viewBox="0 0 24 24"stroke-width="1.5"stroke="currentColor"class="w-6 h-6 hover:text-[#e87c04] cursor-pointer transition-all" (click)="isSearch = false">
+              <svg xmlns="http://www.w3.org/2000/svg"fill="none" viewBox="0 0 24 24"stroke-width="1.5"stroke="currentColor"class="w-6 h-6 z-10 hover:text-[#e87c04] cursor-pointer transition-all" (click)="isSearch = false">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </div>
@@ -186,7 +191,7 @@
   </div>
   <div class="h-6 border-t-4 border-b-4 border-[#e87c04] py-3" style="background: #A33230 url(../../../../assets/imgs/share/coffee-bean-line-bg.png) repeat-x center / 37px auto;">
   </div>
-  <div class="text-center w-full pt-10 pb-3 md:pt-3  h-full   px-4 flex items-end justify-center   bg-[rgba(0,0,0,0.8)] ">
+  <div class="text-center w-full pt-10 pb-3 md:pt-3  h-full px-4 flex items-end justify-center  bg-[rgba(0,0,0,0.8)] transition-opacity duration-500" [class.opacity-0]="!isScrollDown" [class.opacity-0]="isScrollDown">
     <span class="text-white font-extrabold text-xs sm:text-sm">
       Receive a free TWGTea reusable tote bag on orders of $100 or more!
     </span>

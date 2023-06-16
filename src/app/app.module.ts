@@ -9,18 +9,20 @@ import { HeaderComponent } from './components/partials/header/header.component';
 import { CoffeeBeansComponent } from './components/partials/header/coffee-beans/coffee-beans.component';
 import { PackedCoffeeAndAccessoriesComponent } from './components/partials/header/packed-coffee-and-accessories/packed-coffee-and-accessories.component';
 import { SlideBarComponent } from './components/partials/header/slide-bar/slide-bar.component';
-import { ReusableButtonComponent } from './components/reusable-button/reusable-button.component';
+import { FooterComponent } from './components/partials/footer/footer.component';
+
 
 
 const components = [
   HeaderComponent,
   CoffeeBeansComponent,
   PackedCoffeeAndAccessoriesComponent,
-  SlideBarComponent
+  SlideBarComponent,
+  FooterComponent
 ]
 
 @NgModule({
-  declarations: [AppComponent, AuthLayoutComponent, DashboardLayoutComponent, ...components, ReusableButtonComponent],
+  declarations: [AppComponent, AuthLayoutComponent, DashboardLayoutComponent, ...components],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
