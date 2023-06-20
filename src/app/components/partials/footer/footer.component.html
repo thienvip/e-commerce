@@ -1,12 +1,12 @@
-<footer 
+<footer
   [ngClass]="{'h-[55px]': !isScrollDown}"
   class="w-screen fixed  bottom-0 bg-[#16244e] z-20 text-[#fffde9]"
 >
-  <div class="relative bottom-0 left-0 right-0 pt-10 pb-5 px-0 " >
+  <div [ngClass]="isScrollDown ? 'pt-10' :'pt-5'" class="relative bottom-0 left-0 right-0 pb-5 px-0 " >
     <div class="absolute  left-0 right-0 h-0 top-0 before:content-[''] before:absolute before:h-1 before:w-full before:z-10  before:left-0 before:-bottom-1 before:bg-gradient-to-r before:from-[#674e18] before:from-10% before:via-[#d6a436] before:via-60% before:to-[#cd9c2e]" ></div>
     <div class="container mx-auto max-w-6xl">
-      <div class="flex justify-between ">
-        <div class="flex justify-between text-base gap-5 ">
+      <div [ngClass]="{'flex': isScrollDown}" class="flex justify-between ">
+        <div  [ngClass]="{'hidden': !isScrollDown}" class="flex justify-between text-sm gap-5 ">
           <ul class="w-64">
             <li class="pb-2 hover:underline"><a href="#">CONTACT US</a></li>
             <li class="pb-2 hover:underline"><a href="#">TERMS & CONDITIONS</a></li>
@@ -20,9 +20,9 @@
             <li class="pb-2 hover:underline"><a href="#">FATHER'S DAY GIFT GUIDE</a></li>
           </ul>
         </div>
-        <div  class="flex flex-col gap-4">
-          <span>FOLLOW US</span>
-          <div class="flex gap-4">
+        <div  [ngClass]="isScrollDown ? 'flex-col' :'justify-between flex-row-reverse'" class="flex text-sm  gap-4">
+          <span [ngClass]="{'hidden': !isScrollDown}">FOLLOW US</span>
+          <div class="flex gap-4 items-center">
             <a href="#">
               <img src="../../../../assets/imgs/share/youtube.svg" />
             </a>
@@ -38,6 +38,10 @@
             <a href="#">
               <img src="../../../../assets/imgs/share/instagram.svg" />
             </a>
+            <span [ngClass]="{'hidden': isScrollDown}" class="text-xs">FIND OUT MORE ABOUT BACHA COFFEE</span>
+            <div (click)="isScrollDown = true" [ngClass]="{'opacity-0': isScrollDown}" class="mx-5 cursor-pointer">
+              <img src="../../../../assets/imgs/share/arrow-up.png"/>
+            </div>
           </div>
           <span class="text-[0.5rem]">© 2023 BACHA COFFEE. ALL RIGHTS RESERVED.</span>
         </div>

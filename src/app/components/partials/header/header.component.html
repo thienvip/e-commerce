@@ -191,11 +191,10 @@
   </div>
   <div class="h-6 border-t-4 border-b-4 border-[#e87c04] py-3" style="background: #A33230 url(../../../../assets/imgs/share/coffee-bean-line-bg.png) repeat-x center / 37px auto;">
   </div>
-  <div class="text-center w-full pt-10 pb-3 md:pt-3  h-full px-4 flex items-end justify-center  bg-[rgba(0,0,0,0.8)] transition-opacity duration-500" [class.opacity-0]="!isScrollDown" [class.opacity-0]="isScrollDown">
+  <div class="text-center w-full pt-10 pb-3 md:pt-3  h-full px-4 flex items-end justify-center  bg-[rgba(0,0,0,0.8)] transition-opacity duration-500" [ngClass]="isScrollDown ? 'hidden opacity-0' :'opacity-100'" >
     <span class="text-white font-extrabold text-xs sm:text-sm">
       Receive a free TWGTea reusable tote bag on orders of $100 or more!
     </span>
   </div>
-
 </header>
 

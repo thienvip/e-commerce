@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { BrewDetailComponent } from './pages/brew-detail/brew-detail.component';
+import { BrewDetailModule } from './pages/brew-detail/brew-detail.module';
+
 
 
 
@@ -20,7 +23,15 @@ const routes: Routes = [
     {
       path:'home',
       loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
-    }
+    },
+    {
+      path:'brew-detail/:id',
+      loadChildren: () => import('./pages/brew-detail/brew-detail.module').then(m => m.BrewDetailModule)
+    },
+    {
+      path:'cart-page',
+      loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule)
+    },
   ]
 },
 // Auth routes

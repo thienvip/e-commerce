@@ -1,0 +1,33 @@
+<div class="container mx-auto max-w-6xl pt-52 py-40 px-20 flex justify-center gap-10 ">
+  <img class="w-full h-64 object-cover rounded-3xl hover:opacity-80" [src]="food.imageUrl" [alt]="food.name"/>
+  <div class="w-full flex flex-col p-2 text-white ">
+    <div class="flex justify-between">
+      <span class="text-3xl font-bold">
+        {{food.name}}
+      </span>
+      <span class=" text-2xl {{food.favorite? 'text-[#e72929]': 'text-gray-500'}}">❤</span>
+    </div>
+    <div class="flex flex-wrap my-4">
+      <span class="px-3 py-2 text-lg mt-2 mx-2 rounded-full bg-slate-600 " *ngFor="let origin of food.origins">
+        {{origin}}
+      </span>
+    </div>
+    <div class="flex flex-wrap">
+      <a *ngFor="let tag of food.tags" class="px-2 bg-white rounded-full mx-2 text-gray-700 text-sm" routerLink="/home/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+    <div class="mx-2 my-2">
+      <span>
+        Time to cook about <strong>{{food.cookTime}}</strong> minutes
+      </span>
+    </div>
+
+    <div class="mx-2 flex justify-between ">
+      <span>
+        {{food.price | currency}}
+      </span>
+      <button class="bg-[#faac4d] rounded-3xl px-4 py-2  text-black text-sm hover:opacity-80" (click)="addToCart()">Add To Cart</button>
+    </div>
+  </div>
+</div>

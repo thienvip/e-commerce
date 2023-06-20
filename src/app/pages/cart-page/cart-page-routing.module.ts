@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { CartPageComponent } from './cart-page.component';
 
 const routes: Routes = [
   {
@@ -8,26 +8,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: CartPageComponent
       },
-      {
-        path: 'search/:searchTerm',
-        component: HomeComponent
-      },
-      {
-        path: 'tag/:tag',
-        component: HomeComponent
-      },
-
-
-
     ]
   }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule { }
+export class CartPageRoutingModule { }

@@ -5,6 +5,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeBannerComponent } from './home-banner/home-banner.component';
 import { HomeComponent } from './home.component';
 import { HomeBrewComponent } from './home-brew/home-brew.component';
+import { SearchComponent } from 'src/app/components/partials/search/search.component';
+import { TagsComponent } from 'src/app/components/partials/tags/tags.component';
+
+
 
 
 @NgModule({
@@ -12,6 +16,8 @@ import { HomeBrewComponent } from './home-brew/home-brew.component';
     HomeComponent,
     HomeBannerComponent,
     HomeBrewComponent,
+    SearchComponent,
+    TagsComponent
   ],
   imports: [
     CommonModule,
