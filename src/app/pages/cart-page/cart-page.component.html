@@ -1,1 +1,121 @@
-<p>cart-page works!</p>
+<div class="bg-[#fcfcec] min-h-screen">
+  <div class="container mx-auto max-w-6xl pt-56 pb-40 px-5 flex flex-col justify-center items-center gap-5 ">
+    <span  class="text-[#182755] mt-10 font-semibold text-4xl l">SHOPPING BAG</span>
+    <span class="w-3/5 text-xs font-light px-16  text-[#575757] text-justify">Minimum purchase of $30 is required for every transaction. Shipments to all countries except Singapore will be made on a duties unpaid (DDU) basis, which means, you as an importer or the recipient are solely responsible for payment of any applicable duties and taxes upon receipt of your order. During sales period, we'll be experiencing high volume of orders. We seek your kindest understanding if your shipment is taking longer than usual.</span>
+    <app-not-found
+      [visible]="!cart || !cart.items.length"
+      notFoundMessage="Your bag is empty!"
+      resetLinkText="Go To Homepage"
+    ></app-not-found>
+    <div *ngIf="cart && cart.items.length" class="relative w-full overflow-x-auto ">
+      <table class="w-full text-sm text-left text-gray-500 ">
+          <thead class="text-sm text-white text-center border h-14 ">
+              <tr>
+                  <th scope="col" class="px-6 py-3 text-left bg-[#182755] border-r border-white">
+                      Product Item(s)
+                  </th>
+                  <th scope="col" class="px-6 py-3  bg-[#182755] border-r border-white">
+                      Quantity
+                  </th>
+                  <th scope="col" class="px-6 py-3 bg-[#182755] border-r border-white">
+                      Subtotal
+                  </th>
+                  <th scope="col" class="px-6 py-3 bg-[#182755] border-r border-white">
+                      Action
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let cartItem of cart.items" class=" border-b border-black">
+                  <td class="flex py-2  ">
+                    <div class="w-24 h-28">
+                      <img class="w-full h-full object-cover" [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+                    </div>
+                    <div class="mx-2 space-y-1 text-xs ">
+                      <a class="text-black  font-semibold" routerLink="/brew-detail/{{cartItem.food.id}}" >
+                        {{cartItem.food.name}}
+                      </a>
+                      <p>
+                        {{cartItem.food.price | currency}}
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="flex justify-center ">
+                      <select #quantitySelect class="bg-[#f2eee2] px-5 py-2 outline-none"
+                        [value]="cartItem.quantity"
+                        (change)="changeQuantity(cartItem, quantitySelect.value)">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-semibold text-gray-900 ">
+                    <div class="flex justify-center">
+                      {{cartItem.food.price *  cartItem.quantity | currency}}
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex justify-center text-xs">
+                      <button class="font-medium text-red-600 rounded-full hover:opacity-80  px-3 py-1 bg-[#f2eee2]" (click)="removeFromCart(cartItem)">Remove</button>
+                    </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <div class="border-b mt-4 pb-4 border-black flex gap-3">
+        <span class="text-xs text-slate-600 ">Would you like a gift message?</span>
+        <label class="relative inline-flex items-center  cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer">
+          <div class="w-11 border border-black h-5 peer-focus:outline-none  rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#e87c04]">
+          </div>
+        </label>
+      </div>
+      <div class="flex justify-end my-14">
+        <div class="bg-[#182755] p-5 text-white w-1/2 ">
+            <div class="relative">
+              <p class="text-center text-xl">Order Summary</p>
+              <div class="absolute  left-0 right-0 h-0 top-8 before:content-[''] before:absolute before:h-[0.12rem] before:w-full before:z-10  before:left-0 before:-bottom-1 before:bg-gradient-to-r before:from-[#674e18] before:from-10% before:via-[#d6a436] before:via-60% before:to-[#cd9c2e]" ></div>
+              <div class="absolute  left-0 right-0 h-0 top-[17rem] before:content-[''] before:absolute before:h-[0.12rem] before:w-full before:z-10  before:left-0 before:-bottom-1 before:bg-gradient-to-r before:from-[#674e18] before:from-10% before:via-[#d6a436] before:via-60% before:to-[#cd9c2e]" ></div>
+              <div class="mt-10 flex justify-between text-xs">
+                <div>Product Item(s)</div>
+                <div>{{cart.totalCount}}</div>
+              </div>
+              <div class="mt-2 text-xs pb-5 flex justify-between border-b border-white">
+                <div>Subtotal</div>
+                <div>{{cart.totalPrice|currency}}</div>
+              </div>
+              <div class="mt-5 px-5 flex justify-between text-xl ">
+                <div>Grand Total</div>
+                <div>{{cart.totalPrice|currency}}</div>
+              </div>
+              <div class="flex justify-end">
+                <button class="bg-[#faac4d] rounded-3xl px-5 py-2 mt-5 text-black  hover:opacity-80 transition-all">Check out</button>
+              </div>
+              <p class="text-[0.55rem] italic text-right mt-2">*minimum Order of $30 for every Purchaser</p>
+              <p class="text-xs italic text-center mt-10">
+                Available Payment Method
+              </p>
+              <div class="flex gap-2 justify-center my-3">
+                <a>
+                  <img src="../../../assets/icons/cc-w-americanex.jpg"/>
+                </a>
+                <a>
+                  <img src="../../../assets/icons/cc-w-mastercard.jpg"/>
+                </a>
+                <a>
+                  <img src="../../../assets/icons/cc-w-visa.jpg"/>
+                </a>
+                <a>
+                  <img src="../../../assets/icons/cc-w-paypal.jpg"/>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>

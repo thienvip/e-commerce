@@ -120,23 +120,23 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
             <div class="absolute -top-2 left-5 flex justify-center items-center h-5 w-5 bg-[#e87c04] rounded-full">
-              <span class="text-xs text-white" [ngSwitch]="cartItems.length"  >
+              <span class="text-xs text-white" [ngSwitch]="cartQuantity"  >
                 <ng-container *ngSwitchCase="0">
                   0
                 </ng-container>
                 <ng-container *ngSwitchDefault>
-                  {{ cartItems.length }}
+                  {{ cartQuantity }}
                 </ng-container>
               </span>
             </div>
           </div>
           <div *ngIf="isBag === true" class="absolute p-6 pt-16 md:pt-6 bg-[#182755] top-[5.5rem] lg:top-20 right-0 left-auto w-full md:w-[550px]">
-            <span [ngSwitch]="cartItems.length"  >
+            <span [ngSwitch]="cartQuantity"  >
               <ng-container *ngSwitchCase="0">
                 <div>Shopping cart is empty</div>
               </ng-container>
               <ng-container *ngSwitchDefault>
-                <div>{{ cartItems.length }}</div>
+                <div>There is {{ cartQuantity }} items in your shopping cart</div>
               </ng-container>
             </span>
           </div>

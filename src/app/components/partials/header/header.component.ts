@@ -1,4 +1,5 @@
 import { Component, HostListener, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent {
   containerRef2!: ViewContainerRef;
 
   cartItems: any[] = [];
+  cartQuantity=0;
   isVisible = false;
   isBag = false;
   isAccount= false;
@@ -22,6 +24,12 @@ export class HeaderComponent {
   isSlideBarOpen= false;
   isScrollDown = false;
   currentButtonType: string | null = null;
+
+  constructor(cartService:CartService){
+    cartService.getCartObservable().subscribe((newCart)=>{
+      this.cartQuantity = newCart.totalCount
+    })
+  }
 
   async addDynamicContentCoffeeBeans(buttontext: string) {
 

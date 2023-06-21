@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { BrewDetailComponent } from './pages/brew-detail/brew-detail.component';
-import { BrewDetailModule } from './pages/brew-detail/brew-detail.module';
+
 
 
 

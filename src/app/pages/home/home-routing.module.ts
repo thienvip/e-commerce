@@ -18,9 +18,6 @@ const routes: Routes = [
         path: 'tag/:tag',
         component: HomeComponent
       },
-
-
-
     ]
   }
 ];

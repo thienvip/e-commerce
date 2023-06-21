@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Cart } from 'src/app/shared/models/Cart';
+import { CartItem } from '../../shared/models/CartItem';
 
 @Component({
   selector: 'app-cart-page',
@@ -15,5 +16,15 @@ export class CartPageComponent {
       this.cart = cart
     })
   }
+
+  removeFromCart(cartItem:CartItem){
+    this.cartService.removeFromCart(cartItem.food.id)
+  }
+
+  changeQuantity(cartItem:CartItem, quantityInString:string){
+    const quantity = parseInt(quantityInString);
+    this.cartService.changeQuantity(cartItem.food.id,quantity)
+  }
+
 
 }
