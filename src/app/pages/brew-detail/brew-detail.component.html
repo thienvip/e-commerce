@@ -1,4 +1,11 @@
-<div class="bg-[#fcfcec] min-h-screen">
+
+<app-not-found
+  [visible]="!food"
+  [fullPage]="true"
+  notFoundMessage="Food Not Found"
+  resetLinkText="Back To Homepage">
+</app-not-found>
+<div *ngIf="food" class="bg-[#fcfcec] min-h-screen">
     <div class="container mx-auto max-w-6xl pt-52 py-40 px-20 flex justify-center gap-10 ">
       <img class="w-full h-64 object-cover rounded-3xl hover:opacity-80" [src]="food.imageUrl" [alt]="food.name"/>
       <div class="w-full flex flex-col p-2">

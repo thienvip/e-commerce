@@ -7,6 +7,7 @@ import { HomeComponent } from './home.component';
 import { HomeBrewComponent } from './home-brew/home-brew.component';
 import { SearchComponent } from 'src/app/components/partials/search/search.component';
 import { TagsComponent } from 'src/app/components/partials/tags/tags.component';
+import { NotFoundModule } from 'src/app/components/partials/not-found/not-found.module';
 
 
 
@@ -21,7 +22,8 @@ import { TagsComponent } from 'src/app/components/partials/tags/tags.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    NotFoundModule
   ]
 })
 export class HomeModule { }

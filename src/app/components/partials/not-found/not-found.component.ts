@@ -11,6 +11,8 @@ export class NotFoundComponent {
   @Input()
   visible = false
   @Input()
+  fullPage = false
+  @Input()
   notFoundMessage = "Nothing Found!"
   @Input()
   resetLinkText = "Reset"

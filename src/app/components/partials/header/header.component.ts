@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, ViewChild, ViewContainerRef, ViewEncapsulation, Input } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -15,6 +15,9 @@ export class HeaderComponent {
   @ViewChild("dynamicPackedCoffeeAndAccessories", { read: ViewContainerRef, static: true })
   containerRef2!: ViewContainerRef;
 
+
+  @Input()
+  signIn: string | undefined;
   cartItems: any[] = [];
   cartQuantity=0;
   isVisible = false;

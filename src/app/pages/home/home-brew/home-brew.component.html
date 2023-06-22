@@ -4,6 +4,10 @@
   </div>
   <app-tags></app-tags>
   <app-search></app-search>
+  <app-not-found
+    [visible]="!foods || !foods.length"
+    resetLinkText="Reset Search">
+  </app-not-found>
   <ul class="flex justify-center items-center flex-wrap p-0">
     <li *ngFor="let food of foods ">
       <a  class="  w-80 border border-white rounded-2xl flex flex-col overflow-hidden text-red-500 m-2  " routerLink="/brew-detail/{{food.id}}">

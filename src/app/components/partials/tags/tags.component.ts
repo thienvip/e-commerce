@@ -14,7 +14,9 @@ export class TagsComponent {
   tags?:Tag[]
 
   constructor(foodService:FoodService,private router: Router) {
-    this.tags = foodService.getAllTags();
+    foodService.getAllTags().subscribe(serverTags => {
+      this.tags = serverTags;
+    });
   }
 
   navigateTags(term:string):void{
