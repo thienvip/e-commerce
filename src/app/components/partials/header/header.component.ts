@@ -17,7 +17,7 @@ export class HeaderComponent {
 
 
   @Input()
-  signIn: string | undefined;
+  signIn!: boolean ;
   cartItems: any[] = [];
   cartQuantity=0;
   isVisible = false;

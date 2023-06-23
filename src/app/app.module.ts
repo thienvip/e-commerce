@@ -14,6 +14,7 @@ import { FooterComponent } from './components/partials/footer/footer.component';
 
 
 
+
 const components = [
   HeaderComponent,
   CoffeeBeansComponent,

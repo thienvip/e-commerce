@@ -2,10 +2,10 @@
   <div class="lg:h-24 h-14  bg-[#182755] ">
     <div  class="mx-auto container px-6 max-w-6xl pt-4 lg:pt-12  flex justify-between  gap-10"  >
       <a title="Site's logo" href="#" class="w-20  z-10 md:w-28 relative xl:w-32 transition-all ">
-          <div *ngIf="isScrollDown === false">
+          <div *ngIf="isScrollDown  === false">
             <img loading="lazy" class="w-full h-full logo-img"  alt="image"  src="../../../../assets/imgs/share/logo.png"/>
           </div>
-          <div *ngIf="isScrollDown === true">
+          <div *ngIf="isScrollDown  === true ">
             <img loading="lazy" class="logo-img absolute -top-2 lg:left-10  lg:-top-6  w-12 lg:w-16  "  alt="image"  src="../../../../assets/imgs/share/logo-scroll.png"/>
           </div>
       </a>
@@ -191,7 +191,7 @@
   </div>
   <div class="h-6 border-t-4 border-b-4 border-[#e87c04] py-3" style="background: #A33230 url(../../../../assets/imgs/share/coffee-bean-line-bg.png) repeat-x center / 37px auto;">
   </div>
-  <div class="text-center w-full pt-10 pb-3 md:pt-3  h-full px-4 flex items-end justify-center  bg-[rgba(0,0,0,0.8)] transition-opacity duration-500" [ngClass]="isScrollDown ? 'hidden opacity-0' :'opacity-100'" >
+  <div class="text-center w-full pt-10 pb-3 md:pt-3  h-full px-4 flex items-end justify-center  bg-[rgba(0,0,0,0.8)] transition-opacity duration-500" [ngClass]="isScrollDown && !signIn? 'hidden opacity-0' :'opacity-100'" [ngClass]="signIn ? 'hidden' : ''" >
     <span class="text-white font-extrabold text-xs sm:text-sm">
       Receive a free TWGTea reusable tote bag on orders of $100 or more!
     </span>
