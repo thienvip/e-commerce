@@ -11,8 +11,8 @@ import { CoffeeBeansComponent } from './components/partials/header/coffee-beans/
 import { PackedCoffeeAndAccessoriesComponent } from './components/partials/header/packed-coffee-and-accessories/packed-coffee-and-accessories.component';
 import { SlideBarComponent } from './components/partials/header/slide-bar/slide-bar.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
-
-
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const components = [
@@ -25,7 +25,12 @@ const components = [
 
 @NgModule({
   declarations: [AppComponent, AuthLayoutComponent, DashboardLayoutComponent, ...components],
-  imports: [BrowserModule, AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule,  BrowserAnimationsModule,
+  ToastrModule.forRoot({
+    timeOut:3000,
+    positionClass:'toast-bottom-right',
+    newestOnTop:false
+  })],
   providers: [],
   bootstrap: [AppComponent],
 })

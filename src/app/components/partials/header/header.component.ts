@@ -1,5 +1,7 @@
 import { Component, HostListener, ViewChild, ViewContainerRef, ViewEncapsulation, Input } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/shared/models/User';
 
 @Component({
   selector: 'app-header',
@@ -27,11 +29,25 @@ export class HeaderComponent {
   isSlideBarOpen= false;
   isScrollDown = false;
   currentButtonType: string | null = null;
+  user!:User;
 
-  constructor(cartService:CartService){
+  constructor(cartService:CartService,private userService: UserService){
     cartService.getCartObservable().subscribe((newCart)=>{
       this.cartQuantity = newCart.totalCount
     })
+
+    userService.userObservable.subscribe((newUser) => {
+      this.user = newUser
+    })
+  }
+
+  get isAuth(){
+    return this.user.token;
+  }
+
+
+  logout(){
+    this.userService.logout();
   }
 
   async addDynamicContentCoffeeBeans(buttontext: string) {

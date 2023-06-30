@@ -3,6 +3,14 @@
       <div class="w-full ">
         <p class="text-2xl font-semibold text-white mb-3 text-center">LOG IN</p>
         <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="space-y-4  font-thin" action="#">
+          <input-container label="Email" >
+            <label for="email" class="block mb-2 text-sm  text-white">Your email <span [ngClass]="signInForm.get('email')?.invalid   && (signInForm.get('email')?.dirty || signInForm.get('email') ?.touched) ? 'text-[#a33230;]' : ''" class="text-xs">*</span></label>
+            <input formControlName="email"  type="email" name="email" id="email" class=" w-full bg-gray-50 border border-gray-300 text-gray-900   outline-none focus:border-blue-500 block  p-3 text-xs " placeholder="name@gmail.com" required="">
+            <div *ngIf="signInForm.get('email')?.invalid && (signInForm.get('email')?.dirty || signInForm.get('email')?.touched)" class="text-[#a33230;] text-[0.6rem] mt-1">
+              *Invalid Email Address
+            </div>
+          </input-container>
+
           <div>
               <label for="email" class="block mb-2 text-sm  text-white">Your email <span [ngClass]="signInForm.get('email')?.invalid   && (signInForm.get('email')?.dirty || signInForm.get('email') ?.touched) ? 'text-[#a33230;]' : ''" class="text-xs">*</span></label>
               <input formControlName="email"  type="email" name="email" id="email" class=" w-full bg-gray-50 border border-gray-300 text-gray-900   outline-none focus:border-blue-500 block  p-3 text-xs " placeholder="name@gmail.com" required="">
@@ -20,7 +28,7 @@
           <div class="flex items-center justify-between">
               <div class="flex items-start">
                   <div class="flex items-center h-5">
-                    <input formControlName="rememberMe" id="remember" aria-describedby="remember" type="checkbox" required="">
+                    <input formControlName="rememberMe" id="remember" aria-describedby="remember" type="checkbox" >
                   </div>
                   <div class="ml-3 text-sm">
                     <label for="remember" class="text-gray-500 ">Keep me logged in </label>

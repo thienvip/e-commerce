@@ -147,10 +147,16 @@
           </svg>
           <div *ngIf="isAccount === true" class="absolute px-4 md:pt-4 pt-10 pb-4  bg-[#182755] lg:lg:top-20 top-[5.5rem] right-0 left-auto w-full md:w-[250px] ">
             <ul class="font-light font-sans text-base ">
-              <li class="pb-3">
+              <li *ngIf="!isAuth" class="pb-3">
                 <a href="#" class="hover:text-[#e87c04] transition-all">
                   Login/Register
                 </a>
+              </li>
+              <li class="pb-3" *ngIf="isAuth">
+                <a >Hi {{user.name}}!</a>
+            </li>
+              <li class="pb-3" *ngIf="isAuth">
+                  <a href="#" class="hover:text-[#e87c04] transition-all" (click)="logout()">Logout</a>
               </li>
               <li>
                 <a href="#" class="hover:text-[#e87c04] transition-all">
