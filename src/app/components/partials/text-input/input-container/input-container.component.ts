@@ -8,8 +8,6 @@ import { Component, Input } from '@angular/core';
 export class InputContainerComponent {
 
   @Input()
-  label!:string;
-  @Input()
-  bgColor = 'bg-white'
+  class = 'bg-white'
 
 }

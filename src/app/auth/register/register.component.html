@@ -1,0 +1,74 @@
+<div class=" bg-[hsla(0,0%,74.9%,.3)] w-screen min-h-screen relative " style="backdrop-filter: blur(1000px);">
+  <div class="form absolute bg-[#182755] top-40 left-1/2 -translate-x-1/2  w-[720px] pt-10 px-36 pb-8  max-h-96 overflow-y-scroll">
+    <div class="w-full mb-5 ">
+      <p class="text-2xl font-semibold text-white mb-3 text-center">CREATE AN ACCOUNT</p>
+      <p class="text-sm text-center text-white opacity-70">Join us as a Bacha Member to save your wishes, easy check out and other great features.</p>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-5  font-thin" action="#">
+      <div>
+        <text-input
+          [showErrorsWhen]="fc['name'].invalid && fc['name'].dirty || fc['name'].touched "
+          [control]="fc['name']"
+          type="text"
+          label="Full Name"
+          placeholder="Name"
+        >
+        </text-input>
+      </div>
+      <div>
+        <text-input
+          [showErrorsWhen]="fc['address'].invalid && fc['address'].dirty || fc['address'].touched "
+          [control]="fc['address']"
+          type="text"
+          label="Address"
+          placeholder="Address"
+        >
+        </text-input>
+      </div>
+      <div>
+        <text-input
+          [showErrorsWhen]="fc['email'].invalid && fc['email'].dirty || fc['email'].touched "
+          [control]="fc['email']"
+          type="email"
+          label="Email Address"
+          placeholder="name@gmail.com"
+        >
+        </text-input>
+      </div>
+      <div>
+        <text-input
+        [showErrorsWhen]="fc['password'].invalid && fc['password'].dirty || fc['password'].touched "
+        [control]="fc['password']"
+        type="password"
+        label="Password"
+        placeholder="••••••••"
+        >
+        </text-input>
+      </div>
+      <div>
+        <text-input
+        [showErrorsWhen]="fc['retypePassword'].invalid && fc['retypePassword'].dirty || fc['retypePassword'].touched "
+        [control]="fc['retypePassword']"
+        type="password"
+        label="Retype Password"
+        placeholder="••••••••"
+        >
+        </text-input>
+      </div>
+      <div class="flex flex-col">
+          <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input formControlName="confirm" id="confirm" aria-describedby="confirm" type="checkbox" >
+              </div>
+              <div class="ml-3 text-xs">
+                <label for="confirm" class="text-gray-500 ">I would like to receive news & promotions by email from Bacha Coffee.</label>
+              </div>
+          </div>
+      </div>
+      <p class="text-xs text-slate-500 text-center">By registering in, you agree to Bacha’s <a href="#" class="underline ">Terms & Privacy</a></p>
+      <div class="flex justify-center">
+        <default-button text="Register" type="submit" customStyle="block mx-auto italic text-base w-64 py-2 bg-[#faac4d] rounded-3xl border border-black transition-all text-black hover:opacity-90" ></default-button>
+      </div>
+    </form>
+  </div>
+</div>

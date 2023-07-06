@@ -1,0 +1,17 @@
+<input-container >
+  <input-label
+  [control]="control"
+  [showErrorsWhen]="showErrorsWhen"
+  [label]="label"
+  [darkMode]="darkMode"
+  >
+  </input-label>
+  <input [type]="type" [placeholder]="placeholder"
+  [formControl]="formControl"
+  class=" w-full bg-gray-50 border border-gray-300 text-gray-900   outline-none focus:border-blue-500 block  p-3 text-xs "
+  />
+  <input-validation
+  [control]="control"
+  [showErrorsWhen]="showErrorsWhen">
+  </input-validation>
+</input-container>

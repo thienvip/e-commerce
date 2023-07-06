@@ -1,0 +1,14 @@
+::-webkit-scrollbar {
+  width: 5px;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #adb2b6;
+  border-radius: 20px;
+  visibility: hidden;
+}
+
+.form:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}

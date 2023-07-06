@@ -27,6 +27,10 @@ const routes: Routes = [
       path:'cart-page',
       loadChildren: () => import('./pages/cart-page/cart-page.module').then(m => m.CartPageModule)
     },
+    {
+      path:'checkout',
+      loadChildren: () => import('./pages/checkout-page/checkout-page.module').then(m => m.CheckoutPageModule)
+    },
   ]
 },
 // Auth routes

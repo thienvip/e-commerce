@@ -60,4 +60,8 @@ export class CartService {
     this.cart = new Cart();
     this.setCartToLocalStorage();
   }
+
+  getCart(): Cart{
+    return this.cartSubject.value;
+  }
 }

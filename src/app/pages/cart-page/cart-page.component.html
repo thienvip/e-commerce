@@ -1,6 +1,6 @@
 <div class="bg-[#fcfcec] min-h-screen">
   <div class="container mx-auto max-w-6xl pt-56 pb-40 px-5 flex flex-col justify-center items-center gap-5 ">
-    <span  class="text-[#182755] mt-10 font-semibold text-4xl l">SHOPPING BAG</span>
+    <span  class="text-[#182755] mt-10 font-semibold text-4xl ">SHOPPING BAG</span>
     <span class="w-3/5 text-xs font-light px-16  text-[#575757] text-justify">Minimum purchase of $30 is required for every transaction. Shipments to all countries except Singapore will be made on a duties unpaid (DDU) basis, which means, you as an importer or the recipient are solely responsible for payment of any applicable duties and taxes upon receipt of your order. During sales period, we'll be experiencing high volume of orders. We seek your kindest understanding if your shipment is taking longer than usual.</span>
     <app-not-found
       [visible]="!cart || !cart.items.length"
@@ -93,7 +93,7 @@
                 <div>{{cart.totalPrice|currency}}</div>
               </div>
               <div class="flex justify-end">
-                <button class="bg-[#faac4d] rounded-3xl px-5 py-2 mt-5 text-black  hover:opacity-80 transition-all">Check out</button>
+                <button class="bg-[#faac4d] rounded-3xl px-5 py-2 mt-5 text-black  hover:opacity-80 transition-all" routerLink="/checkout">Check out</button>
               </div>
               <p class="text-[0.55rem] italic text-right mt-2">*minimum Order of $30 for every Purchaser</p>
               <p class="text-xs italic text-center mt-10">

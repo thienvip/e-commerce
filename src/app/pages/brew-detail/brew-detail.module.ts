@@ -13,7 +13,6 @@ import { NotFoundModule } from 'src/app/components/partials/not-found/not-found.
     CommonModule,
     BrewDetailRoutingModule,
     NotFoundModule
-
   ]
 })
 export class BrewDetailModule { }

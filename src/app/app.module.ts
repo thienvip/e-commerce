@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -13,6 +13,9 @@ import { SlideBarComponent } from './components/partials/header/slide-bar/slide-
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { LoadingComponent } from './components/partials/loading/loading.component';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+
 
 
 const components = [
@@ -20,7 +23,8 @@ const components = [
   CoffeeBeansComponent,
   PackedCoffeeAndAccessoriesComponent,
   SlideBarComponent,
-  FooterComponent
+  FooterComponent,
+  LoadingComponent
 ]
 
 @NgModule({
@@ -31,7 +35,9 @@ const components = [
     positionClass:'toast-bottom-right',
     newestOnTop:false
   })],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

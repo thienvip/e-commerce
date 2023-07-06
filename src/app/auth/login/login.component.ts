@@ -40,9 +40,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.signInForm.markAllAsTouched()
-    console.log( this.signInForm.valid)
     if(this.signInForm.invalid) return;
-
     this.userService.login({email:this.fc['email'].value,
       password: this.fc['password'].value}).subscribe(() => {
         this.router.navigateByUrl(this.returnUrl);

@@ -1,0 +1,69 @@
+<div class="bg-[#fcfcec] min-h-screen">
+  <div class="container mx-auto max-w-6xl ">
+    <div class=" pt-56  px-5 flex  justify-center gap-5">
+      <div class="w-full ">
+        <p class="text-center text-[#182755] font-semibold text-xl">Order Form</p>
+        <form [formGroup]="checkoutForm"  class="space-y-4 mt-5 font-thin" action="#">
+          <div>
+            <text-input  [control]="fc['name']" [darkMode]="false" label="Name" type="text" placeholder="Your name" [showErrorsWhen]="fc['name'].invalid && fc['name'].dirty  "></text-input>
+          </div>
+          <div>
+            <text-input [control]="fc['address']" [darkMode]="false"  label="Address" type="text" placeholder="Your address" [showErrorsWhen]="fc['address'].invalid && fc['address'].dirty "></text-input>
+          </div>
+        </form>
+        <table class="w-full text-sm text-left mt-10 text-gray-500 border border-stone-300 ">
+          <tbody >
+              <p class="px-10 py-3 text-lg">Order items:</p>
+              <tr *ngFor="let cartItem of order.items">
+                  <td class="flex py-2 px-10 ">
+                    <div class="w-16 h-16 ">
+                      <img class="w-full h-full object-cover rounded-full" [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+                    </div>
+                    <div class="mx-2 space-y-1 text-xs ">
+                      <a class="text-black  font-semibold" routerLink="/brew-detail/{{cartItem.food.id}}" >
+                        {{cartItem.food.name}}
+                      </a>
+                      <p>
+                        {{cartItem.food.price | currency}}
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="flex justify-center ">
+                      <p>{{cartItem.quantity}}</p>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-semibold text-gray-900 ">
+                    <div class="flex justify-center">
+                      {{cartItem.food.price *  cartItem.quantity | currency}}
+                    </div>
+                  </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <strong>
+                    Total :
+                  </strong>
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 ">
+                  <strong  class="flex justify-center">
+                    {{order.totalPrice | currency}}
+                  </strong>
+                </td>
+              </tr>
+          </tbody>
+
+        </table>
+      </div>
+      <div class="w-full text-center">
+        <p class="text-center text-[#182755] font-semibold text-xl">Choose your address on map</p>
+      </div>
+    </div>
+    <div class="pb-40 pt-10 flex justify-center">
+      <button (click)="createOrder()" class="md:w-72 font-norma italic text-base w-64 py-2 bg-[#faac4d] rounded-3xl border border-black transition-all text-black hover:opacity-90">
+        Go To Payment
+      </button>
+    </div>
+  </div>
+</div>

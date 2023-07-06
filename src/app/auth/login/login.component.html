@@ -3,28 +3,27 @@
       <div class="w-full ">
         <p class="text-2xl font-semibold text-white mb-3 text-center">LOG IN</p>
         <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="space-y-4  font-thin" action="#">
-          <input-container label="Email" >
-            <label for="email" class="block mb-2 text-sm  text-white">Your email <span [ngClass]="signInForm.get('email')?.invalid   && (signInForm.get('email')?.dirty || signInForm.get('email') ?.touched) ? 'text-[#a33230;]' : ''" class="text-xs">*</span></label>
-            <input formControlName="email"  type="email" name="email" id="email" class=" w-full bg-gray-50 border border-gray-300 text-gray-900   outline-none focus:border-blue-500 block  p-3 text-xs " placeholder="name@gmail.com" required="">
-            <div *ngIf="signInForm.get('email')?.invalid && (signInForm.get('email')?.dirty || signInForm.get('email')?.touched)" class="text-[#a33230;] text-[0.6rem] mt-1">
-              *Invalid Email Address
-            </div>
-          </input-container>
-
           <div>
-              <label for="email" class="block mb-2 text-sm  text-white">Your email <span [ngClass]="signInForm.get('email')?.invalid   && (signInForm.get('email')?.dirty || signInForm.get('email') ?.touched) ? 'text-[#a33230;]' : ''" class="text-xs">*</span></label>
-              <input formControlName="email"  type="email" name="email" id="email" class=" w-full bg-gray-50 border border-gray-300 text-gray-900   outline-none focus:border-blue-500 block  p-3 text-xs " placeholder="name@gmail.com" required="">
-              <div *ngIf="signInForm.get('email')?.invalid && (signInForm.get('email')?.dirty || signInForm.get('email')?.touched)" class="text-[#a33230;] text-[0.6rem] mt-1">
-                *Invalid Email Address
-              </div>
+            <text-input
+              [showErrorsWhen]="fc['email'].invalid && fc['email'].dirty || fc['email'].touched "
+              [control]="fc['email']"
+              type="email"
+              label="Your email"
+              placeholder="name@gmail.com"
+            >
+            </text-input>
           </div>
           <div>
-              <label for="password" class="block mb-2 text-sm   text-white ">Password <span class="text-xs" [ngClass]="signInForm.get('password')?.invalid   && (signInForm.get('password')?.dirty || signInForm.get('password') ?.touched) ? 'text-[#a33230;]' : ''">*</span></label>
-              <input formControlName="password" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900   outline-none focus:border-blue-500 block w-full p-3 text-xs  " required="">
-              <div *ngIf="signInForm.get('password')?.invalid && (signInForm.get('password')?.dirty || signInForm.get('password')?.touched)" class="text-[#a33230;] text-[0.6rem] mt-1">
-                *Invalid password
-              </div>
-            </div>
+            <text-input
+            [showErrorsWhen]="fc['password'].invalid && fc['password'].dirty || fc['password'].touched "
+            [control]="fc['password']"
+            type="password"
+            label="Password"
+            placeholder="••••••••"
+            >
+            </text-input>
+          </div>
+
           <div class="flex items-center justify-between">
               <div class="flex items-start">
                   <div class="flex items-center h-5">
@@ -37,13 +36,13 @@
               <a href="#" class="text-sm text-white hover:underline ">Forgot password?</a>
           </div>
           <p class="text-xs text-slate-500 text-center">By logging in, you agree to Bacha’s <a href="#" class="underline ">Terms & Privacy</a></p>
-          <button type="submit" class="block mx-auto italic text-base w-64 py-2 bg-[#faac4d] rounded-3xl border border-black transition-all text-black hover:opacity-90">
-            Log in
-          </button>
+          <div class="flex justify-center">
+            <default-button text="Log in" type="submit" customStyle="block mx-auto italic text-base w-64 py-2 bg-[#faac4d] rounded-3xl border border-black transition-all text-black hover:opacity-90" ></default-button>
+          </div>
           <p class="text-white text-sm text-center font-thin ">
               Not a member yet?
           </p>
-          <a href="#" class="underline text-white text-sm text-center  font-thin block ">Join now</a>
+          <a routerLink="/auth/register" class="underline text-white text-sm text-center  font-thin block hover:opacity-70 transition-all ">Join now</a>
         </form>
       </div>
     </div>

@@ -10,8 +10,6 @@ import { TagsComponent } from 'src/app/components/partials/tags/tags.component';
 import { NotFoundModule } from 'src/app/components/partials/not-found/not-found.module';
 
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,
