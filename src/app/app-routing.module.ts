@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
 // App routes
@@ -29,7 +30,7 @@ const routes: Routes = [
     },
     {
       path:'checkout',
-      loadChildren: () => import('./pages/checkout-page/checkout-page.module').then(m => m.CheckoutPageModule)
+      loadChildren: () => import('./pages/checkout-page/checkout-page.module').then(m => m.CheckoutPageModule),canActivate:[AuthGuard]
     },
   ]
 },
