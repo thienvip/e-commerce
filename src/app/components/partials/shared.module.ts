@@ -6,17 +6,17 @@ import { InputValidationComponent } from './text-input/input-container/input-val
 import { InputLabelComponent } from './text-input/input-container/input-label/input-label.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MapComponent } from './map/map.component';
-import { MapType } from '@angular/compiler';
+import { PaypalButtonComponent } from './paypal-button/paypal-button.component';
 
 
 
 @NgModule({
-  declarations: [TextInputComponent, InputContainerComponent, InputValidationComponent, InputLabelComponent, MapComponent],
+  declarations: [TextInputComponent, InputContainerComponent, InputValidationComponent, InputLabelComponent, MapComponent, PaypalButtonComponent],
   imports: [
     CommonModule, ReactiveFormsModule
   ],
   exports:[
-    TextInputComponent, MapComponent
+    TextInputComponent, MapComponent, PaypalButtonComponent
   ]
 
 })

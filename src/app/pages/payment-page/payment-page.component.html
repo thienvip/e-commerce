@@ -1,16 +1,18 @@
 <div class="bg-[#fcfcec] min-h-screen">
-  <div class="container mx-auto max-w-6xl ">
+  <div class="container mx-auto max-w-6xl">
     <div class=" pt-56  px-5 flex  justify-center gap-5">
       <div class="w-full ">
-        <p class="text-center text-[#182755] font-semibold text-xl">Order Form</p>
-        <form [formGroup]="checkoutForm"  class="space-y-4 mt-5 font-thin" action="#">
-          <div>
-            <text-input  [control]="fc['name']" [darkMode]="false" label="Name" type="text" placeholder="Your name" [showErrorsWhen]="fc['name'].invalid && fc['name'].dirty  "></text-input>
+        <p class="text-left text-[#182755] font-semibold text-xl">Order Summary</p>
+        <div   class="space-y-4 mt-5 font-thin" action="#">
+          <div class="flex gap-2">
+            <h3>Name:</h3>
+            <span>{{order.name}}</span>
           </div>
-          <div>
-            <text-input [control]="fc['address']" [darkMode]="false"  label="Address" type="text" placeholder="Your address" [showErrorsWhen]="fc['address'].invalid && fc['address'].dirty "></text-input>
+          <div class="flex gap-2">
+            <h3>Address:</h3>
+            <span>{{order.address}}</span>
           </div>
-        </form>
+        </div>
         <table class="w-full text-sm text-left mt-10 text-gray-500 border border-stone-300 ">
           <tbody >
               <p class="px-10 py-3 text-lg">Order items:</p>
@@ -57,14 +59,13 @@
         </table>
       </div>
       <div class="w-full text-center">
-        <p class="text-center text-[#182755] font-semibold text-xl">Choose your address on map</p>
-        <map [order]="order"></map>
+        <p class="text-left text-[#182755] font-semibold text-xl">Shipping Address</p>
+        <map [order]="order" [readonly]="true"></map>
       </div>
     </div>
     <div class="pb-52 pt-10 flex justify-center">
-      <button (click)="createOrder()" class="md:w-72 font-norma italic text-base w-64 py-2 bg-[#faac4d] rounded-3xl border border-black transition-all text-black hover:opacity-90">
-        Go To Payment
-      </button>
+      <paypal-button [order]="order"></paypal-button>
     </div>
   </div>
 </div>
+

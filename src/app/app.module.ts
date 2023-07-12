@@ -15,8 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoadingComponent } from './components/partials/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
-
-
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 const components = [
   HeaderComponent,
@@ -36,7 +35,8 @@ const components = [
     newestOnTop:false
   })],
   providers: [
-    {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true },
+    {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
 })
